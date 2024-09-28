@@ -8,7 +8,7 @@ class Handler {
 	static async handle(
 		event: APIGatewayProxyEvent,
 	): Promise<void> {
-		console.info("Calling function with event: ", JSON.stringify(event));
+		console.info(`Calling function in app "${process.env.APP_NAME}" with event: ${JSON.stringify(event)}`);
 	}
 }
 
