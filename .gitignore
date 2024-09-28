@@ -1,0 +1,34 @@
+node_modules
+.webpack
+**/coverage
+.vscode
+.idea
+./layer/*
+nodejs.zip
+.serverless
+.esbuild
+/nodejs
+
+# environments
+.env
+.env.local
+.env.production
+.env.development
+
+packages
+
+ignore
+
+env.json
+env.staging.json
+env.production.json
+.env.test.contract
+
+
+lib
+
+# .asdf
+.tool-versions
+
+# nvm
+.nvmrc

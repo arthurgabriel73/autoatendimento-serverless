@@ -1,0 +1,35 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"strictNullChecks": true,
+		"lib": ["ESNext"],
+		"moduleResolution": "node",
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitAny": false,
+		"removeComments": true,
+		"sourceMap": true,
+		"target": "ES2020",
+		"outDir": "lib",
+		"esModuleInterop": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"useDefineForClassFields": true,
+		"baseUrl": ".",
+		"paths": {
+			"@modules/*": ["src/modules/*"],
+			"@tests/*": ["__tests__/*"]
+		}
+	},
+	"include": ["./serverless.ts", "src/**/*.ts", "__tests__/**/*.ts"],
+	"exclude": [
+		"node_modules/**/*",
+		".serverless/**/*",
+		".webpack/**/*",
+		"_warmup/**/*",
+		".vscode/**/*"
+	],
+	"ts-node": {
+		"require": ["tsconfig-paths/register"]
+	}
+}
