@@ -13,7 +13,6 @@ export const service: Serverless = {
         patterns: ['!__tests__/**']
     },
     custom: {
-        stage: '${opt:stage, self:provider.stage}',
         modulesDir: 'src/modules',
         layersDir: 'packages',
         esbuild: {
