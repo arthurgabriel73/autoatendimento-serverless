@@ -44,5 +44,8 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Create Node.js layer
+        run: sh ./scripts/nodejsLayer.sh
+
       - name: Deploy with Serverless
         run: sls deploy
