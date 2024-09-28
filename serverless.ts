@@ -10,17 +10,10 @@ export const service: Serverless = {
         runtime: 'nodejs20.x',
     },
     package: {
-        patterns: ['!__tests__/**', '!node_modules/**', '.serverless/**', '.webpack/**', '_warmup/**', '.vscode/**', '.esbuild/**'],
-        exclude: [
-            "node_modules/**/*",
-		    ".serverless/**/*",
-		    ".webpack/**/*",
-		    "_warmup/**/*",
-		    ".vscode/**/*",
-            ".esbuild/**/*"
-        ],
+        patterns: ['!__tests__/**']
     },
     custom: {
+        stage: '${opt:stage, self:provider.stage}',
         modulesDir: 'src/modules',
         layersDir: 'packages',
         esbuild: {
@@ -41,6 +34,7 @@ export const service: Serverless = {
                 artifact: './packages/nodejs.zip'
             },
             compatibleRuntimes: ['nodejs20.x'],
+            description: 'Node modules lambda layer autoatendimento serverless',
             name: 'NodeModulesLayer'
         } as any
     },
