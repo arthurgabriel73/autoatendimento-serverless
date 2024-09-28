@@ -10,7 +10,15 @@ export const service: Serverless = {
         runtime: 'nodejs20.x',
     },
     package: {
-        patterns: ['!__tests__/**', '!node_modules/**', '.serverless/**', '.webpack/**', '_warmup/**', '.vscode/**'],
+        patterns: ['!__tests__/**', '!node_modules/**', '.serverless/**', '.webpack/**', '_warmup/**', '.vscode/**', '.esbuild/**'],
+        exclude: [
+            "node_modules/**/*",
+		    ".serverless/**/*",
+		    ".webpack/**/*",
+		    "_warmup/**/*",
+		    ".vscode/**/*",
+            ".esbuild/**/*"
+        ],
     },
     custom: {
         modulesDir: 'src/modules',
