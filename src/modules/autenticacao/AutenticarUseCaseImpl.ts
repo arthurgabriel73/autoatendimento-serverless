@@ -4,7 +4,7 @@ export class AutenticarUseCaseImpl {
     async execute(cpf: string): Promise<AutenticarOutput> {
         return {
             cpf,
-            allow: true,
+            allowed: true,
             token: 'token'
         }
     }

@@ -1,3 +1,3 @@
 export class AutenticarOutput {
-    constructor(readonly cpf: string, readonly allow: boolean, readonly token?: string) {}
+    constructor(readonly cpf: string, readonly allowed: boolean, readonly token?: string) {}
 }
