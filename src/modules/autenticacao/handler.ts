@@ -14,7 +14,7 @@ class Handler {
 		try {
 			const body = JSON.parse(event.body || '{}');
 			const controller = autenticarControllerFactory();
-			return controller.run(body);
+			return await controller.run(body);
 		} catch (error) {
 			if (error instanceof ZodError) {
 				const zodError = fromZodError(error);
