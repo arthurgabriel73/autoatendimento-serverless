@@ -44,7 +44,7 @@ jobs:
           aws secretsmanager get-secret-value --secret-id ${{ secrets.SECRET_ID }} --region ${{ secrets.AWS_REGION }} | jq -r '.SecretString' | jq -r "to_entries|map(\"\(.key)=\\\"\(.value|tostring)\\\"\")|.[]" > .env
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Create Node.js layer
         run: sh ./scripts/nodejsLayer.sh
