@@ -1,4 +1,5 @@
 import type { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
+import { autenticarFactory as autenticarControllerFactory } from './factory';
 
 /*
 	Run this function locally with the following command:
@@ -8,13 +9,9 @@ class Handler {
 	static async handle(
 		event: APIGatewayProxyEvent,
 	): Promise<APIGatewayProxyResult> {
-		console.info(`Calling function in app "${process.env.APP_NAME}" with event body: ${JSON.stringify(event.body ?? '{}')}`);
-		return {
-			statusCode: 200,
-			body: JSON.stringify({
-				message: 'Usuário autenticado com sucesso!',
-			}),
-		}
+		const body = JSON.parse(event.body || '{}');
+		const controller = autenticarControllerFactory();
+		return controller.run(body);
 	}
 }
 
