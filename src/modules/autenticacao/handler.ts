@@ -16,6 +16,7 @@ class Handler {
 			const controller = autenticarControllerFactory();
 			return await controller.run(body);
 		} catch (error) {
+			console.error(error);
 			if (error instanceof ZodError) {
 				const zodError = fromZodError(error);
 				return {
