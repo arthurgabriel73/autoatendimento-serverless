@@ -1,17 +1,18 @@
 import { AutenticarOutput } from "./AutenticarOutput";
 import { DBClient } from "./DBClient";
+import { TokenService } from "./TokenService";
 
 export class AutenticarUseCaseImpl {
-    constructor(private readonly dbClient: DBClient) {}
+    constructor(private readonly dbClient: DBClient, private tokenService: TokenService) {}
     
     async execute(cpf: string | null): Promise<AutenticarOutput> {
-        if (!cpf) return { cpf, allowed: true, token: this.generateToken() };
+        if (!cpf) return { cpf, allowed: true };
         const user = await this.dbClient.findOne('cliente', 'cpf', cpf);
-        if (user) return { cpf: user.cpf, allowed: true, token: this.generateToken() };
+        if (user) return { cpf: user.cpf, allowed: true, token: this.generateToken(cpf) };
         return { cpf: null, allowed: false };
     }
 
-    private generateToken(): string {
-        return 'token';
+    private generateToken(cpf: string): string {
+        return this.tokenService.generateToken({ cpf });
     }
 }
