@@ -1,7 +1,7 @@
-import { AutenticacaoFunctionsHttp } from "./http";
+import { autenticacaoFunctionsHttp } from "./http";
 
-export const AutenticacaoAws = {
+export const autenticacaoAws = {
     functions: {
-        ...AutenticacaoFunctionsHttp
+        ...autenticacaoFunctionsHttp
     }
 }

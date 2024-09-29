@@ -1,8 +1,8 @@
-import { AutenticacaoAws } from "@modules/autenticacao";
+import { autenticacaoAws } from "@modules/autenticacao";
 import { Serverless } from "serverless/aws";
 
 export const service: Serverless = {
-    service: 'autoatendimentoServerless',
+    service: 'autoatendimento-serverless',
     frameworkVersion: '3',
     useDotenv: true,
     provider: {
@@ -44,7 +44,7 @@ export const service: Serverless = {
         'serverless-prune-plugin'
     ],
     functions: {
-        ...AutenticacaoAws.functions
+        ...autenticacaoAws.functions
     }
 }
 
