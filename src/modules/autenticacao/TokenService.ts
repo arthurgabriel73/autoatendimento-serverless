@@ -1,3 +1,3 @@
 export interface TokenService {
-    generateToken(params: Object): string;
+    generateToken(subject: string): string;
 }
