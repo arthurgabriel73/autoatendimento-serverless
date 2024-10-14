@@ -13,11 +13,6 @@ export const autenticacaoFunctionsHttp: Functions = {
                     cors: true
                 }
             }
-        ],
-        vpc: {
-          securityGroupIds: [process.env.SECURITY_GROUP_ID!],
-          subnetIds: [process.env.SUBNET_ID!]
-        }
-    
+        ]
     }
 }
