@@ -1,4 +1,5 @@
 import type { Functions } from 'serverless/aws';
+import { securityGroupIds, subnetIds } from './vpc-config';
 
 export const autenticacaoFunctionsHttp: Functions = {
   autenticar: {
@@ -15,8 +16,7 @@ export const autenticacaoFunctionsHttp: Functions = {
       }
     ],
     vpc: {
-      securityGroupIds: [process.env.SECURITY_GROUP_ID as string],
-      subnetIds: [process.env.SUBNET_ID_1A as string, process.env.SUBNET_ID_1B as string]
+      securityGroupIds, subnetIds
     }
   }
 }
