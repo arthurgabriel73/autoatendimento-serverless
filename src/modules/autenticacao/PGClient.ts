@@ -1,11 +1,10 @@
 import { Pool } from 'pg';
 import { DBClient } from './DBClient';
-import AWS from 'aws-sdk';
-const s3 = new AWS.S3();
-const bucketName = process.env.S3_BUCKET_NAME!;
-const caFileName = process.env.CA_FILE_NAME!;
+import { S3Adapter } from './S3Adapter';
+
 
 export class PGClient implements DBClient {
+    private readonly CA_FILE_NAME = process.env.CA_FILE_NAME!;
     private pool: Pool | undefined;
 
     constructor() {
@@ -28,13 +27,8 @@ export class PGClient implements DBClient {
     }
 
     private async loadPemFromS3(): Promise<string> {
-        const params = {
-            Bucket: bucketName,
-            Key: caFileName
-        };
-
-        const data = await s3.getObject(params).promise();
-        return data.Body!.toString('ascii');
+        const s3Adapter = new S3Adapter();
+        return s3Adapter.getObject(this.CA_FILE_NAME);
     }
 
     public async findOne(table: string, field: string, value: any): Promise<any> {
