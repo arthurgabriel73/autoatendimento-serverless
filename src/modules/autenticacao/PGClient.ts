@@ -11,7 +11,7 @@ export class PGClient implements DBClient {
             database: process.env.DB_NAME,
             port: parseInt(process.env.DB_PORT!),
             host: process.env.DB_HOST,
-            ssl: true
+            ssl: false
         });
     }
 
